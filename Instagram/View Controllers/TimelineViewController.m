@@ -6,6 +6,8 @@
 //
 
 #import "TimelineViewController.h"
+#import "LoginViewController.h"
+#import "SceneDelegate.h"
 
 @interface TimelineViewController ()
 
@@ -17,6 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)didTapLogout:(id)sender {
+    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    myDelegate.window.rootViewController = loginViewController;
+}
+
+
 
 /*
 #pragma mark - Navigation
@@ -27,5 +38,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
 
 @end
