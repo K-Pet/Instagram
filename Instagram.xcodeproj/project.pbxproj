@@ -16,6 +16,7 @@
 		3DB396802694F12E000EFCAF /* InstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3967F2694F12E000EFCAF /* InstagramTests.m */; };
 		3DB3968B2694F12E000EFCAF /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3968A2694F12E000EFCAF /* InstagramUITests.m */; };
 		3DB3969B26950793000EFCAF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3969A26950793000EFCAF /* LoginViewController.m */; };
+		3DB3969E269619AA000EFCAF /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3969D269619AA000EFCAF /* TimelineViewController.m */; };
 		720900FA7A6D10D05EC8BCAD /* Pods_Instagram_InstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861BBB70DB286B4E07CB313D /* Pods_Instagram_InstagramUITests.framework */; };
 		9E3A5795FF4947500F56A32B /* Pods_InstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A1A155F515BB88C5D36B5C /* Pods_InstagramTests.framework */; };
 		E9D8969E8F332D5E2BEB1D0E /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50DE63BA66AA8D798DB48176 /* Pods_Instagram.framework */; };
@@ -60,6 +61,8 @@
 		3DB3968C2694F12E000EFCAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB3969926950793000EFCAF /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3DB3969A26950793000EFCAF /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3DB3969C269619AA000EFCAF /* TimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		3DB3969D269619AA000EFCAF /* TimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		50DE63BA66AA8D798DB48176 /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		861BBB70DB286B4E07CB313D /* Pods_Instagram_InstagramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram_InstagramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A1A155F515BB88C5D36B5C /* Pods_InstagramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +161,8 @@
 			children = (
 				3DB3969926950793000EFCAF /* LoginViewController.h */,
 				3DB3969A26950793000EFCAF /* LoginViewController.m */,
+				3DB3969C269619AA000EFCAF /* TimelineViewController.h */,
+				3DB3969D269619AA000EFCAF /* TimelineViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				3DB396762694F12E000EFCAF /* main.m in Sources */,
 				3DB396682694F12D000EFCAF /* SceneDelegate.m in Sources */,
 				3DB3969B26950793000EFCAF /* LoginViewController.m in Sources */,
+				3DB3969E269619AA000EFCAF /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
