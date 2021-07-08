@@ -1,21 +1,41 @@
 //
-//  PhotoMapViewController.m
+//  PhotoViewController.m
 //  Instagram
 //
 //  Created by Kobe Petrus on 7/7/21.
 //
 
-#import "PhotoMapViewController.h"
+#import "PhotoViewController.h"
+#import "Post.h"
 
 
-@interface PhotoMapViewController ()
+@interface PhotoViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UITextField *captionTextView;
 
 @end
 
-@implementation PhotoMapViewController
+@implementation PhotoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+//    imagePickerVC.delegate = self;
+//    imagePickerVC.allowsEditing = YES;
+//
+//    // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    }
+//    else {
+//        NSLog(@"Camera 🚫 available so we will use photo library instead");
+//        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    }
+//
+//    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    // Do any additional setup after loading the view.
+}
+- (IBAction)chooseImageButton:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -30,16 +50,16 @@
     }
 
     [self presentViewController:imagePickerVC animated:YES completion:nil];
-    // Do any additional setup after loading the view.
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
+
     // Do something with the images (based on your use case)
-    
+    self.postImageView.image = editedImage;
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -53,5 +73,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)didTapPostButton:(id)sender {
+    [Post postUserImage:self.postImageView.image withCaption: self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Error posting image: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"image post Success!");
+        }
+        }
+     ];}
 
 @end

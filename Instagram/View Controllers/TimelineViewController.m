@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
 #import "Parse/Parse.h"
+#import "Post.h"
 @interface TimelineViewController ()
 
 @end
