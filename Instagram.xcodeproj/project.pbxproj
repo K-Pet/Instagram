@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D167E8D269668230016E83B /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D167E8C269668230016E83B /* PhotoMapViewController.m */; };
 		3DB396652694F12D000EFCAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB396642694F12D000EFCAF /* AppDelegate.m */; };
 		3DB396682694F12D000EFCAF /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB396672694F12D000EFCAF /* SceneDelegate.m */; };
 		3DB3966E2694F12D000EFCAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3966C2694F12D000EFCAF /* Main.storyboard */; };
@@ -43,6 +44,8 @@
 		25B1D641BDF37C6BFC048321 /* Pods-Instagram-InstagramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.debug.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		28C112BFB43FE8788E891CBD /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		37C29A5E93C84DD87472FC22 /* Pods-InstagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramTests.release.xcconfig"; path = "Target Support Files/Pods-InstagramTests/Pods-InstagramTests.release.xcconfig"; sourceTree = "<group>"; };
+		3D167E8B269668230016E83B /* PhotoMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoMapViewController.h; sourceTree = "<group>"; };
+		3D167E8C269668230016E83B /* PhotoMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoMapViewController.m; sourceTree = "<group>"; };
 		3DB396602694F12D000EFCAF /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB396632694F12D000EFCAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3DB396642694F12D000EFCAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				3DB3969A26950793000EFCAF /* LoginViewController.m */,
 				3DB3969C269619AA000EFCAF /* TimelineViewController.h */,
 				3DB3969D269619AA000EFCAF /* TimelineViewController.m */,
+				3D167E8B269668230016E83B /* PhotoMapViewController.h */,
+				3D167E8C269668230016E83B /* PhotoMapViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D167E8D269668230016E83B /* PhotoMapViewController.m in Sources */,
 				3DB396652694F12D000EFCAF /* AppDelegate.m in Sources */,
 				3DB396762694F12E000EFCAF /* main.m in Sources */,
 				3DB396682694F12D000EFCAF /* SceneDelegate.m in Sources */,

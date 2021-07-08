@@ -68,7 +68,7 @@
         <!--Timeline View Controller-->
         <scene sceneID="QBl-Fh-D8q">
             <objects>
-                <viewController id="8BM-b2-Hin" customClass="TimelineViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimelineViewController" id="8BM-b2-Hin" customClass="TimelineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jdh-fr-Rgr">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,16 +93,43 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="3AJ-SL-0yE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iVh-o4-eRI">
+                                <rect key="frame" x="349" y="15.666666666666664" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="insta_camera_btn"/>
+                                <connections>
+                                    <action selector="didTapTakePhoto:" destination="8BM-b2-Hin" eventType="touchUpInside" id="HVw-9M-PXe"/>
+                                    <segue destination="5IH-Jv-Ego" kind="show" id="AhT-dt-xqr"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3r-Tv-PIt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1744.6153846153845" y="88.862559241706151"/>
         </scene>
+        <!--Photo Map View Controller-->
+        <scene sceneID="Cyv-p4-87R">
+            <objects>
+                <viewController storyboardIdentifier="PhotoMapViewController" id="5IH-Jv-Ego" customClass="PhotoMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BWF-Ml-4EB">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4kF-Fx-4we"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KaR-DU-7Sl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kgx-Jr-9Lb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2714" y="89"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="HdE-nw-c41">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5yv-mm-MzZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AuthenticatedViewController" automaticallyAdjustsScrollViewInsets="NO" id="5yv-mm-MzZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XOy-qT-sDa">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
@@ -119,6 +146,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
