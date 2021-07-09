@@ -7,6 +7,7 @@
 
 #import "Post.h"
 #import "PhotoViewController.h"
+
 @implementation Post
     
 @dynamic postID;
