@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
 
 @end
 

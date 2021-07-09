@@ -9,6 +9,8 @@ target 'Instagram' do
 	pod 'Parse'
 	pod 'ParseLiveQuery'
 	pod 'Parse/UI'
+	pod 'AFNetworking'
+	pod 'DateTools'
   target 'InstagramTests' do
     inherit! :search_paths
     # Pods for testing

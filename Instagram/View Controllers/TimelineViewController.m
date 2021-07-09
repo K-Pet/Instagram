@@ -11,8 +11,11 @@
 #import "Parse/Parse.h"
 #import "Post.h"
 #import "PostsCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "DetailViewController.h"
+#import "DateTools.h"
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *postsTableView;
 @property (strong, nonatomic) NSArray *arrayOfPosts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
@@ -24,31 +27,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.postsTableView.dataSource = self;
+    self.postsTableView.delegate = self;
     
     [self fetchPosts];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
-    [self.tableView addSubview:self.refreshControl];
+    [self.postsTableView insertSubview:self.refreshControl atIndex:0];
+    [self.postsTableView addSubview:self.refreshControl];
 
 }
 
 - (void) fetchPosts{
     // construct PFQuery
-    PFQuery *postQuery = [Post query];
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Post"];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
 
     // fetch data asynchronously
-    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts) {
             self.arrayOfPosts = posts;
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            [self.tableView reloadData];
+            [self.postsTableView reloadData];
         }
         else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -70,15 +73,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PostsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostsCell"];
+    PostsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostsCell" forIndexPath:indexPath];
     
     Post *post = self.arrayOfPosts[indexPath.row];
     cell.authorLabel.text = post.author.username;
     cell.captionLabel.text = post.caption;
-    cell.commentsCountLabel.text = post.commentCount;
-    cell.likesCountLabel.text = post.likeCount;
-    cell.postImageView.file = post.image;
+    NSNumber* commentValue = post[@"commentCount"];
+    cell.commentsCountLabel.text = [commentValue stringValue];
+    NSNumber* likesValue = post[@"likeCount"];
+    cell.likesCountLabel.text = [[likesValue stringValue] stringByAppendingString: @" Likes"];
+    PFFileObject *postImage = post[@"image"]; // set your column name from Parse here
+    NSURL * imageURL = [NSURL URLWithString:postImage.url];
+    [cell.postImageView setImageWithURL:imageURL];
+    NSString *stringDate = post.createdAt.description;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    NSDate *dateDate = [formatter dateFromString:stringDate];
     
+    cell.createdAtLabel.text = dateDate.shortTimeAgoSinceNow;
+   
     return cell;
      
 }
@@ -91,11 +104,18 @@
 
 #pragma mark - Navigation
 
-//// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//}
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.postsTableView indexPathForCell:tappedCell];
+    NSDictionary *post = self.arrayOfPosts[indexPath.row];
+
+    
+    DetailViewController *detailsViewController = [segue destinationViewController];
+    detailsViewController.post = post;
+    // Pass the selected object to the new view controller.
+}
 
 
 
