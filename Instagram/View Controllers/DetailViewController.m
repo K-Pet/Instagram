@@ -28,12 +28,12 @@
     [self.postView setImageWithURL:imageURL];
     
     self.captionLabel.text = self.post.caption;
-    NSString *stringDate = self.post.createdAt.description;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-    NSDate *dateDate = [formatter dateFromString:stringDate];
+    NSDate *dateDate = self.post.createdAt;
     
     self.timestampLabel.text = dateDate.shortTimeAgoSinceNow;
+
 
     
 

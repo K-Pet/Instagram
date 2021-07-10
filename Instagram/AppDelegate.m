@@ -14,6 +14,14 @@
 
 @implementation AppDelegate
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application       supportedInterfaceOrientationsForWindow:(UIWindow *)window
+ {
+    if (self.blockRotation) {
+        return UIInterfaceOrientationMaskPortrait;
+ }
+     return UIInterfaceOrientationMaskAll;
+ }
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(  NSDictionary *)launchOptions {
     return YES;
 }

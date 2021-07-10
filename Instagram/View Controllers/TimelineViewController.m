@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailViewController.h"
 #import "DateTools.h"
+#import "PhotoViewController.h"
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *postsTableView;
 @property (strong, nonatomic) NSArray *arrayOfPosts;
@@ -79,16 +80,17 @@
     cell.authorLabel.text = post.author.username;
     cell.captionLabel.text = post.caption;
     NSNumber* commentValue = post[@"commentCount"];
-    cell.commentsCountLabel.text = [commentValue stringValue];
+    cell.commentsCountLabel.text = [[commentValue stringValue] stringByAppendingString:@" Comments"];
     NSNumber* likesValue = post[@"likeCount"];
     cell.likesCountLabel.text = [[likesValue stringValue] stringByAppendingString: @" Likes"];
     PFFileObject *postImage = post[@"image"]; // set your column name from Parse here
     NSURL * imageURL = [NSURL URLWithString:postImage.url];
     [cell.postImageView setImageWithURL:imageURL];
-    NSString *stringDate = post.createdAt.description;
+    
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-    NSDate *dateDate = [formatter dateFromString:stringDate];
+    NSDate *dateDate = post.createdAt;
     
     cell.createdAtLabel.text = dateDate.shortTimeAgoSinceNow;
    
@@ -107,13 +109,21 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.postsTableView indexPathForCell:tappedCell];
-    NSDictionary *post = self.arrayOfPosts[indexPath.row];
+    if ([segue.identifier isEqualToString:@"detailSegue"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.postsTableView indexPathForCell:tappedCell];
+        NSDictionary *post = self.arrayOfPosts[indexPath.row];
 
+        
+        DetailViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+    }
+    if ([segue.identifier isEqualToString:@"postSegue"]){
+        PhotoViewController *photoViewController = [segue destinationViewController];
+        
+        
+    }
     
-    DetailViewController *detailsViewController = [segue destinationViewController];
-    detailsViewController.post = post;
     // Pass the selected object to the new view controller.
 }
 
