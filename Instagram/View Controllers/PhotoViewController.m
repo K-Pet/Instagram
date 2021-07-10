@@ -77,8 +77,9 @@
         }
         else{
             NSLog(@"image post Success!");
+            [self.navigationController popViewControllerAnimated:YES];
         }
-        [self dismissViewControllerAnimated:true completion:nil];
+        
 //        UIView *view = [[UIView alloc] initWithNibName:@"AuthenticatedViewController" bundle:nil];
 //            [self.view addSubview:view];
         }];
